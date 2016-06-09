@@ -23,6 +23,7 @@
                <th>Title</th>
                <th>Body</th>
                <th>Category</th>
+               <th>Author</th>
                <th>Created At</th>
                <th></th>
            </thead>
@@ -36,10 +37,21 @@
                        <td>{{ $post->title }}</td>
                        <td>{{ substr($post->body, 0, 50) }}{{ strlen($post->body)>50 ? "..." : ""}}</td>
                        <td>{{ $post->category->name }}</td>
+                       <td>{{ $post->user->name }}</td>
                        <td>{{ date('M j, Y H:i', strtotime($post->created_at)) }}</td>
                        <td>
-                           <a href="{{ route('posts.show', $post->id) }}" class="btn btn-default btn-sm">View</a>
-                           <a href="{{ route('posts.edit',$post->id ) }}" class="btn btn-default btn-sm">Edit</a>
+                           @if($post->user_id == Auth::user()->id || Auth::user()->id == 1)
+                               <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary btn-sm">View</a>
+                           @else
+                               <a href="#" class="btn btn-default btn-sm">View</a>
+                           @endif
+
+                           @if($post->user_id == Auth::user()->id  || Auth::user()->id == 1)
+                               <a href="{{ route('posts.edit',$post->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                           @else
+                               <a href="#" class="btn btn-default btn-sm">Edit</a>
+                           @endif
+
                        </td>
                    </tr>
 

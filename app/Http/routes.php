@@ -36,9 +36,12 @@
     //Comments
     Route::resource('comments', 'CommentController', ['except' => ['create', 'update', 'index', 'show', 'edit']]);
 
+    //Blog pages
     Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])
         ->where('slug','[\w\d\-\_]+');
     Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
+
+    //Main pages
     Route::get('/', 'PagesController@getIndex');
     Route::get('about', 'PagesController@getAbout');
     Route::get('contact', 'PagesController@getContact');

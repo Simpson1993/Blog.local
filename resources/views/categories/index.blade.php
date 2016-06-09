@@ -21,22 +21,27 @@
                     <tr>
                         <th>{{ $category->id }}</th>
                         <td>{{ $category->name }}</td>
-                        <td>
-                            {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}
+                        @if(Auth::user()->id == 1)
+                            <td>
+                                {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}
 
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm
-                            btn-position space-remember']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm
+                                btn-position space-remember']) !!}
 
-                            {!! Form::close() !!}
+                                {!! Form::close() !!}
 
-                            <a href="{{ route('categories.edit',$category->id ) }}" class="btn btn-default btn-sm
-                            btn-position">Edit</a>
-                        </td>
+                                <a href="{{ route('categories.edit',$category->id ) }}" class="btn btn-default btn-sm
+                                btn-position">Edit</a>
+                            </td>
+                        @else
+                            <td></td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+
         <div class="col-md-3">
             <div class="well">
                 {!! Form::open(['route' => 'categories.store', 'method' => 'POST']) !!}
@@ -48,6 +53,7 @@
                 {!! Form::close() !!}
             </div>
         </div>
+
     </div>
 
 @endsection

@@ -12,7 +12,7 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1>Create New Post</h1>
+            <h1>Create New Post {{$users}}</h1>
             <hr>
             {!! Form::open(array('route' => 'posts.store', 'data-parsley-validate' => '')) !!}
 
@@ -30,6 +30,8 @@
                     @endforeach
 
                 </select>
+
+                {{ Form::hidden('user_id', $users) }}
 
                 {{ Form::label('slug', 'Slug: ') }}
                 {{ Form::text('slug', null, ['class' => 'form-control', 'required' => '', 'minlength' => '5',

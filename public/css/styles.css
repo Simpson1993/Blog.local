@@ -23,5 +23,19 @@
     color: #2c8aff;
 }
 .user-name {
-    color: #39ff47; text-align: center;
+    color: #39ff47;
+    text-align: center;
+}
+.user-info {
+    color: #0086ff;
+    text-align: left;
+    padding-left: 40px;
+    font-family: Times;
+    font-size: 18px;
+}
+.main-image{
+    background-color: #ddfffa;
+}
+.jmb-image{
+    background-image: url('http://z210.ru/uploads/posts/2016-04/1460241245_skyrim-world-rocks-winter-cold-the-elder-scrolls-v-skyrim-2560x1440.jpg');
 }

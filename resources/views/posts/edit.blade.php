@@ -3,6 +3,7 @@
 @section('title', '| Edit Blog Post')
 
 @section('content')
+    @if ($post->user_id == Auth::user()->id)
     <div class = "row">
         {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
         <div class = "col-md-8">
@@ -11,6 +12,8 @@
 
             {{ Form::label('category_id', 'Category: ', ["class" => 'form-spacing-top']) }}
             {{ Form::select('category_id', $categories, null, ['class' => 'form-control']) }}
+
+            {{ Form::hidden('user_id', $users) }}
 
             {{ Form::label('slug', 'Slug: ', ["class" => 'form-spacing-top']) }}
             {{ Form::text('slug', null, ["class" => 'form-control']) }}
@@ -44,5 +47,8 @@
         {!! Form::close() !!}
 
     </div>
-
+    @else
+        <h1>404 Not Found</h1>
+        <p>Страница не найдена</p>
+    @endif
 @endsection

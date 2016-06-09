@@ -3,7 +3,7 @@
 @section('title', '| View Post')
 
 @section('content')
-
+    @if ($post->user_id == Auth::user()->id)
     <div class = "row">
         <div class = "col-md-8">
             <h1>{{ $post->title }}</h1>
@@ -20,6 +20,10 @@
                 <dl class = "dl-horizontal">
                     <label>Category: </label>
                     <p>{{ $post->category->name }}</p>
+                </dl>
+                <dl class = "dl-horizontal">
+                    <label>Author: </label>
+                    <p>{{ $post->user->name }}</p>
                 </dl>
                 <dl class = "dl-horizontal">
                     <label>Created At: </label>
@@ -53,7 +57,8 @@
             </div>
         </div>
     </div>
-
-
-
+    @else
+        <h1>404 Not Found</h1>
+        <p>Страница не найдена</p>
+    @endif
 @endsection

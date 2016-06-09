@@ -16,6 +16,7 @@
             <p class="font-for-body">{{ $post->body }}</p>
             <hr>
             <p>Posted In: {{ $post->category->name }}</p>
+            <b>Author: {{ $post->user->name }}</b>
             <hr>
             <h3 class="for-comment">Comments</h3>
 

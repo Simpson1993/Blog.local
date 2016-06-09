@@ -32,6 +32,9 @@
                             <li><a href="{{ route('categories.index') }}"><i class="glyphicon glyphicon-pushpin"></i> Categories</a></li>
                             <li><a href="{{ url('user/profile/'.Auth::user()->id) }}"><i class="glyphicon glyphicon-user"></i> My Profile</a></li>
                             <li><a href={{ url('user/settings') }} ><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+                            @if (Auth::user()->id == 10)
+                                <li><a href={{ url('user/settings') }} ><i class="glyphicon glyphicon-briefcase"></i> Admin room</a></li>
+                            @endif
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ route('logout') }} "><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
                         </ul>
