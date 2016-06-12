@@ -11,9 +11,6 @@
                             Please read my popular post!</p>
                         <p><a class="btn btn-primary btn-lg" href="#" role="button">Popular Post</a></p>
                     </div>
-                </div>
-        </div>
-        <div class="row main-image">
             <div class="col-md-8">
 
                 @foreach($posts as $post)

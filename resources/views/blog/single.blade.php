@@ -54,10 +54,6 @@
                 @endif
             @endforeach
 
-            <div class="text-center">
-                {!! $comments->links() !!}
-            </div>
-
         </div>
     </div>
 

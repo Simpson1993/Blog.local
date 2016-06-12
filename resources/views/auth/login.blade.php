@@ -18,6 +18,8 @@
             {{ Form::checkbox('remember') }}{{ Form::label('remember', 'Remember Me', ['class' => 'space-remember']) }}
             <br>
             {{ Form::submit('Login', ['class' => 'btn btn-primary btn-block']) }}
+            <br>
+            {{ Html::linkRoute('register', 'Registration', [], ['class' => 'btn btn-block btn-primary']) }}
 
             <p><a href="{{ url('password/reset') }}">Forgot My Password</a> </p>
 

@@ -12,9 +12,9 @@
 */
 
     //User information: profile, setting
-    Route::get('user/settings', 'ProfileController@viewSettings');
+    Route::get('user/settings', ['as' => 'settings', 'uses' => 'ProfileController@viewSettings']);
     Route::post('user/settings', 'ProfileController@saveSettings');
-    Route::any('user/profile/{userId}', 'ProfileController@viewProfile');
+    Route::any('user/profile/{userId}', ['as' => 'profile', 'uses' => 'ProfileController@viewProfile']);
 
     // Authentication Routes
     Route::get('auth/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
@@ -22,7 +22,7 @@
     Route::get('auth/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
     // Registration Routes
-    Route::get('auth/register', 'Auth\AuthController@getRegister');
+    Route::get('auth/register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
     Route::post('auth/register', 'Auth\AuthController@postRegister');
 
     // Password Reset Routes
@@ -41,9 +41,10 @@
         ->where('slug','[\w\d\-\_]+');
     Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
 
+    //Posts pages
+    Route::resource('posts', 'PostController');
+
     //Main pages
     Route::get('/', 'PagesController@getIndex');
     Route::get('about', 'PagesController@getAbout');
     Route::get('contact', 'PagesController@getContact');
-    Route::resource('posts', 'PostController');
-
