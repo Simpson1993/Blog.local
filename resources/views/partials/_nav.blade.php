@@ -34,7 +34,7 @@
                         </ul>
                     </li>
                 @else
-                    <li>{{ Html::linkRoute('login', ' Login', [], ['class' =>'btn btn-default btn-top-space glyphicon glyphicon-log-in']) }}</li>
+                    <li>{{ Html::linkRoute('login', ' Login', [], ['class' =>'btn btn-default glyphicon glyphicon-log-in']) }}</li>
                 @endif
             </ul>
 

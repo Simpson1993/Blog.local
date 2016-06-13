@@ -21,7 +21,7 @@
                     <tr>
                         <th>{{ $category->id }}</th>
                         <td>{{ $category->name }}</td>
-                        @if(Auth::user()->id == 1)
+                        @if(Auth::user()->id == 99)
                             <td>
                                 {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}
 
