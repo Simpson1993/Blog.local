@@ -28,9 +28,9 @@ class ProfileController extends Controller
         $user = User::find(Auth::user()->id);
 
         $this->validate($request, [
-            'profile_banner_url' => 'required',
-            'profile_image_url' => 'required',
-            'age' => 'required',
+            'profile_banner_url' => 'url|alpha',
+            'profile_image_url' => 'url|alpha',
+            'age' => 'required|numeric',
             'about_me' => 'required',
             'contacts' => 'required',
         ]);
