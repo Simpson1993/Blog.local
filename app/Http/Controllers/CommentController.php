@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Session;
 use App\Comment;
+use Auth;
 
 class CommentController extends Controller
 {
@@ -25,14 +26,14 @@ class CommentController extends Controller
     {
         //save a new comment
         $this->validate($request, array(
-            'user_id' => 'required',
+
             'body' => 'required',
-            'post_id'=>'required'
+            
         ));
 
         $comment = new Comment;
 
-        $comment->user_id = $request->user_id;
+        $comment->user_id = Auth::user()->id;
         $comment->body = $request->body;
         $comment->post_id = $request->post_id;
 

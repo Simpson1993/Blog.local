@@ -101,12 +101,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
-        $categories = Category::all();
-        $cats = [];
-        foreach ($categories as $category){
-            $cats[$category->id] = $category->name;
-        }
+        $post = Post::findOrFail($id);
+        $cats = Category::lists('name', 'id');
 
         if (Auth::check()) {
             $users = Auth::user()->id;

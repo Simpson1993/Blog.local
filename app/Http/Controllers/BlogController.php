@@ -20,9 +20,8 @@ class BlogController extends Controller
         return view('blog.index')->withPosts($posts);
     }
 
-    public function getSingle($slug){
+    public function getSingle(Post $post){
         //fetch from the DB based on slug
-        $post = Post::where('slug', '=', $slug)->first();
         $comments =  Comment::orderBy('id', 'desc')->paginate(10);
         if (Auth::check()) {
             $users = Auth::user()->id;
