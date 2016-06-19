@@ -40,8 +40,4 @@ class PagesController extends Controller
 
         return view('pages.about')->withData($data);
     }
-
-    public function getContact(){
-        return view('pages.contact');
-    }
 }

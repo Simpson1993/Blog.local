@@ -30,8 +30,4 @@ class BlogController extends Controller
         }
         return view('blog.single')->withPost($post)->withComments($comments)->withUsers($users);
     }
-    public function getAdmin(){
-
-    }
-
 }

@@ -11,6 +11,12 @@
 |
 */
 
+    //Feedback
+    Route::get('contact',
+        ['as' => 'contact', 'uses' => 'AboutController@create']);
+    Route::post('contact',
+        ['as' => 'contact_store', 'uses' => 'AboutController@store']);
+
     //User information: profile, setting
     Route::get('user/settings', ['as' => 'settings', 'uses' => 'ProfileController@viewSettings']);
     Route::post('user/settings', 'ProfileController@saveSettings');
@@ -51,4 +57,3 @@
     //Main pages
     Route::get('/', 'PagesController@getIndex');
     Route::get('about', 'PagesController@getAbout');
-    Route::get('contact', 'PagesController@getContact');
