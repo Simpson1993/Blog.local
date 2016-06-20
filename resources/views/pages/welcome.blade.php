@@ -24,7 +24,21 @@
 
             </div>
             <div class="col-md-3 col-md-offset-1 main-image">
-                    <h2>Categories</h2>
+                {!! Form::open(array('route' => 'post_search', 'class' => 'form navbar-form navbar-right searchform')) !!}
+
+                <div class="input-group">
+                    {!! Form::text('search', null,
+                                           ['required',
+                                            'class'=>'form-control',
+                                            'placeholder'=>'Search posts...']) !!}
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+                {!! Form::close() !!}
+                <h2>Categories</h2>
 
                         @foreach($categories as $category)
                         <h4>{{ $category->name }}</h4>

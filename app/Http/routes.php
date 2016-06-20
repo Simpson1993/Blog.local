@@ -11,6 +11,10 @@
 |
 */
 
+    //Search
+    Route::post('search',
+        ['as' => 'post_search', 'uses' => 'SearchPostsController@postSearch']);
+
     //Feedback
     Route::get('contact',
         ['as' => 'contact', 'uses' => 'AboutController@create']);
