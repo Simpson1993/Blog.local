@@ -16,7 +16,7 @@
 
                     <div class="post">
                         <h2>{{ $post->title }}</h2>
-                        <p>{{ substr($post->body, 0, 300) }} {{ strlen($post->body) > 300 ? "..." : "" }}</p>
+                        <p>{{ substr($post->body, 0, 150) }} {{ strlen($post->body) > 150 ? "..." : "" }}</p>
                         <a href="{{ url('blog/'.$post->slug) }}" class="btn btn-primary">Read More</a>
                     </div>
                     <hr>

@@ -28,5 +28,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Корисні посилання
 
-- [laravel-recipes](http://laravel-recipes.com/)
-- [laravel 5.2 -api](https://laravel.com/api/5.2/)
+- [laravel-recipes](http://laravel-recipes.com/);
+- [laravel 5.2 -api](https://laravel.com/api/5.2/).
