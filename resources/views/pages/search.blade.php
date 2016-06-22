@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <h3>{{ ($post->title) }}</h3>
-                    <p>{{ substr($post->body, 0, 150) }} {{ strlen($post->body) > 300 ? "..." : "" }}</p>
+                    <p>{{ substr($post->body, 0, 150) }} {{ strlen($post->body) > 150 ? "..." : "" }}</p>
                     <p><a href="{{ url('blog/'.$post->slug) }}">read more...</a></p>
                 </div>
             </div>
