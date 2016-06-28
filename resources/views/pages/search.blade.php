@@ -5,7 +5,7 @@
 @section('content')
 
     @if (count($posts) === 0)
-        ... no posts found
+        ... no one posts found
     @elseif (count($posts) >= 1)
 
         @foreach($posts as $post)

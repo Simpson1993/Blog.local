@@ -11,6 +11,9 @@
 |
 */
 
+    //Telegram chat-bot
+    Route::get('/api', ['as' => 'message', 'uses' => 'TelegramBotController@getMessage']);
+
     //Search
     Route::post('search',
         ['as' => 'post_search', 'uses' => 'SearchPostsController@postSearch']);
