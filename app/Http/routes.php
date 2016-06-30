@@ -12,7 +12,7 @@
 */
 
     //Telegram chat-bot
-    Route::get('/api', ['as' => 'message', 'uses' => 'TelegramBotController@getMessage']);
+    Route::post('/api', ['as' => 'message', 'uses' => 'TelegramBotController@getMessage']);
 
     //Search
     Route::post('search',
