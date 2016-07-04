@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Session;
 use App\Comment;

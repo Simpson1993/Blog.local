@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\User;
 use Auth;
@@ -14,17 +13,19 @@ use App\Post;
 class ProfileController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
-    public function viewSettings(){
+    public function viewSettings()
+    {
         $user = User::find(Auth::user()->id);
 
         return view('user.settings')->withUser($user);
     }
-    public function saveSettings(Request $request){
-
+    public function saveSettings(Request $request)
+    {
         $user = User::find(Auth::user()->id);
 
         $this->validate($request, [
@@ -50,7 +51,8 @@ class ProfileController extends Controller
         return Redirect()->back();
     }
 
-    public function viewProfile($id){
+    public function viewProfile($id)
+    {
         $user = User::find($id);
         $user_id = Auth::user()->id;
         $comments = Comment::where('user_id', '=', $user_id)->count();
@@ -58,5 +60,4 @@ class ProfileController extends Controller
 
         return view('user.profile')->withUser($user)->withComments($comments)->withUser_id($user_id)->withPosts($posts);
     }
-
 }

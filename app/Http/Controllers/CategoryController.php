@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
@@ -10,7 +10,8 @@ use Session;
 
 class CategoryController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 

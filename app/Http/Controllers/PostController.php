@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
 use Session;
 use Illuminate\Http\Request;
@@ -10,11 +10,11 @@ use App\Category;
 use App\User;
 use Auth;
 
-
 class PostController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     /**
@@ -40,7 +40,7 @@ class PostController extends Controller
 
         if (Auth::check()) {
             $users = Auth::user()->id;
-        }else{
+        } else {
             $users = null;
         }
         return view('posts.create')->withCategories($categories)->withUsers($users);
@@ -77,7 +77,6 @@ class PostController extends Controller
 
         //redirect to another page
         return redirect()->route('posts.show', $post->id);
-
     }
 
     /**
@@ -106,7 +105,7 @@ class PostController extends Controller
 
         if (Auth::check()) {
             $users = Auth::user()->id;
-        }else{
+        } else {
             $users = null;
         }
 
@@ -123,7 +122,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
-        if($request->input('slug') == $post->slug){
+        if ($request->input('slug') == $post->slug) {
             $this->validate($request, array(
                 'title' => 'required|max:255',
                 'category_id' => 'required|integer',

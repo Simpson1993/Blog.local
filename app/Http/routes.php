@@ -51,11 +51,11 @@
                     => ['create', 'update', 'index', 'show', 'edit']]);
 
     //Blog pages
-    Route::bind('blog', function($slug){
+    Route::bind('blog', function ($slug) {
         return App\Post::where('slug', $slug)->firstOrFail();
     });
     Route::get('blog/{blog}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])
-        ->where('slug','[\w\d\-\_]+');
+        ->where('slug', '[\w\d\-\_]+');
     Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
 
     //Posts pages

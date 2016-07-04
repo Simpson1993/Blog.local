@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace app;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,12 +8,13 @@ class Comment extends Model
 {
     protected $table = 'comments';
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 
-    public function post(){
-
+    public function post()
+    {
         return $this->belongsTo('App\Post');
     }
 }

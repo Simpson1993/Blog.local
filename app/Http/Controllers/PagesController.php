@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
 use App\Category;
 use App\User;
-
 use App\Http\Requests;
 
 class PagesController extends Controller
 {
 
-    public function getIndex(){
+    public function getIndex()
+    {
         $posts = Post::orderBy('created_at', 'desc')->get();
         $comments = Comment::orderBy('id', 'desc')->limit(4)->get();
         $categories = Category::all();
@@ -28,7 +28,8 @@ class PagesController extends Controller
             ->withI($i);
     }
 
-    public function getAbout(){
+    public function getAbout()
+    {
         $first = 'Volodya';
         $last = 'Simpson';
 

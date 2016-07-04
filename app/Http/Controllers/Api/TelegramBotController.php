@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use GuzzleHttp\Client;
-Use Session;
+use Session;
 
 class TelegramBotController extends Controller
 {
@@ -15,14 +14,13 @@ class TelegramBotController extends Controller
 
     public function getMessage(Request $request)
     {
-        $client = new Client (['base_uri' => $this->url]);
+        $client = new Client(['base_uri' => $this->url]);
 
         $input_text = $request->json('message.text');
         $chat_id = $request->json('message.chat.id');
 
         $keyboard = [];
-        switch ($input_text)
-        {
+        switch ($input_text) {
             case '/currencies':
                 $text = 'Курс валют Національного банку';
                 $keyboard = [
@@ -144,7 +142,7 @@ class TelegramBotController extends Controller
 
     public function sendProviderMessage($chat_id, $provider)
     {
-        $client = new Client (['base_uri' => $this->url]);
+        $client = new Client(['base_uri' => $this->url]);
         $currency = Currency::whereIsLatest(1)->whereProvider(Providers::getId($provider))->get();
 
         $usd_bid = number_format($currency->where('currency', 'USD')->pluck('bid')->first(), 2);
@@ -168,12 +166,11 @@ class TelegramBotController extends Controller
                 'text' => $text,
             ]
         ]);
-
     }
 
     public function sendCurrencyMessage($chat_id, $text)
     {
-        $client = new Client (['base_uri' => $this->url]);
+        $client = new Client(['base_uri' => $this->url]);
 
         $currency = Currency::whereIsLatest(1)->whereProvider(Providers::getId('nbu'))->get();
 
@@ -185,6 +182,5 @@ class TelegramBotController extends Controller
                 'text' => $response,
             ]
         ]);
-
     }
 }

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Post;
 
@@ -17,4 +16,3 @@ class SearchPostsController extends Controller
         return view('pages.search', compact('posts', 'query'));
     }
 }
-

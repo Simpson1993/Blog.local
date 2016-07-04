@@ -1,16 +1,18 @@
 <?php
 
-namespace App;
+namespace app;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany('App\Post');
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany('App\Comment');
     }
     /**
