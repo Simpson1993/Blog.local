@@ -57,8 +57,6 @@
                         <p>{{ $comment->body }}</p>
 
                     @endforeach
-
-
             </div>
             </div>
             <hr>
