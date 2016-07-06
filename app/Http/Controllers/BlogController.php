@@ -22,7 +22,7 @@ class BlogController extends Controller
     public function getSingle(Post $post)
     {
         //fetch from the DB based on slug
-        $comments =  Comment::orderBy('id', 'desc')->paginate(10);
+        $comments =  Comment::orderBy('id', 'desc')->paginate(50);
         if (Auth::check()) {
             $users = Auth::user()->id;
         } else {

@@ -39,15 +39,15 @@
                 {!! Form::close() !!}
                 <h2>Categories</h2>
 
-                        @foreach($categories as $category)
+                    @foreach($categories as $category)
                         <h4>{{ $category->name }}</h4>
-                                @foreach($posts as $post)
-                                    @if ($post->category_id == $category->id)
-                                    <a href="{{ url('blog/'.$post->slug) }}">{{ ($post->title) }}</a>
-                                    <br>
-                                    @endif
-                                @endforeach
+                        @foreach($posts as $post)
+                            @if ($post->category_id == $category->id)
+                                <a href="{{ url('blog/'.$post->slug) }}">{{ ($post->title) }}</a>
+                                <br>
+                            @endif
                         @endforeach
+                    @endforeach
 
             </div>
                 <div class="col-md-3 col-md-offset-1 main-image main-radius form-spacing-top">

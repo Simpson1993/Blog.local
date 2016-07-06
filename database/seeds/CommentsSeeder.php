@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Post;
+use App\Comment;
 
-class PostsSeeder extends Seeder
+class CommentsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,19 +14,16 @@ class PostsSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        Post::truncate();
+        Comment::truncate();
 
-        foreach(range(1, 30) as $index)
+        foreach(range(1, 90) as $index)
         {
-            Post::create([
-                'title' => $faker->sentence,
-                'category_id' => rand(1, 5),
+            Comment::create([
                 'user_id' => rand(1, 6),
-                'body' => $faker->text,
-                'slug' => $faker->slug,
+                'body' => $faker->sentence,
+                'post_id' => rand(1, 30),
                 'created_at' => $faker->dateTime
             ]);
         }
     }
 }
-
