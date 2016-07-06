@@ -14,7 +14,7 @@ class BlogController extends Controller
 
     public function getIndex()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
 
         return view('blog.index')->withPosts($posts);
     }
@@ -22,7 +22,7 @@ class BlogController extends Controller
     public function getSingle(Post $post)
     {
         //fetch from the DB based on slug
-        $comments =  Comment::orderBy('id', 'desc')->paginate(50);
+        $comments =  Comment::orderBy('created_at', 'desc')->get();
         if (Auth::check()) {
             $users = Auth::user()->id;
         } else {

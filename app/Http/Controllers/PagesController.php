@@ -14,7 +14,7 @@ class PagesController extends Controller
 
     public function getIndex()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->limit(10)->get();
         $comments = Comment::orderBy('id', 'desc')->limit(4)->get();
         $categories = Category::all();
         $i = 0;
@@ -24,7 +24,8 @@ class PagesController extends Controller
         # compile or process data from the model if needed
         # pass that data to the correct view
 
-        return view('pages.welcome')->withPosts($posts)->withComments($comments)->withCategories($categories)
+        return view('pages.welcome')->withPosts($posts)->withComments
+        ($comments)->withCategories($categories)
             ->withI($i);
     }
 
