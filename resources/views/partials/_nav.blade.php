@@ -25,6 +25,7 @@
                         <ul class="dropdown-menu">
                             <li>{{ Html::linkRoute('posts.index', ' Posts', [], ['class' =>'glyphicon glyphicon-list-alt']) }}</li>
                             <li>{{ Html::linkRoute('categories.index', ' Categories', [], ['class' =>'glyphicon glyphicon-pushpin']) }}</li>
+                            <li>{{ Html::linkRoute('tags.index', ' Tags',[], ['class' =>'glyphicon glyphicon-tags']) }}</li>
                             <li>{{ Html::linkRoute('profile', ' My Profile', [Auth::user()->id], ['class' =>'glyphicon glyphicon-user']) }}</li>
                             <li>{{ Html::linkRoute('settings', ' Settings', [], ['class' =>'glyphicon glyphicon-cog']) }}</li>
                             @if (Auth::user()->id == 99)

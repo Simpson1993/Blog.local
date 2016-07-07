@@ -9,6 +9,7 @@ use App\Post;
 use App\Category;
 use App\User;
 use Auth;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -37,13 +38,15 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $tags = Tag::all();
 
         if (Auth::check()) {
             $users = Auth::user()->id;
         } else {
             $users = null;
         }
-        return view('posts.create')->withCategories($categories)->withUsers($users);
+        return view('posts.create')->withCategories($categories)
+            ->withUsers($users)->withTags($tags);
     }
 
     /**
@@ -72,6 +75,8 @@ class PostController extends Controller
         $post->body = $request->body;
 
         $post->save();
+
+        $post->tags()->sync($request->tags, false);
 
         Session::flash('success', 'The blog post was successfully save!');
 
@@ -109,7 +114,10 @@ class PostController extends Controller
             $users = null;
         }
 
-        return view('posts.edit')->withPost($post)->withCategories($cats)->withUsers($users);
+        $tags = Tag::lists('name', 'id');
+
+        return view('posts.edit')->withPost($post)->withCategories($cats)
+            ->withUsers($users)->withTags($tags);
     }
 
     /**
@@ -148,6 +156,13 @@ class PostController extends Controller
         $post->body = $request->input('body');
 
         $post->save();
+
+        if(isset($request->tags)){
+            $post->tags()->sync($request->tags);
+        } else {
+            $post->tags()->sync([]);
+        }
+        $post->tags()->sync($request->tags);
 
         Session::flash('success', 'This post was successfully saved!');
 
