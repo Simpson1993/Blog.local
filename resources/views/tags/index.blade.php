@@ -21,22 +21,22 @@
                     <tr>
                         <th>{{ $tag->id }}</th>
                         <td>{{ $tag->name }}</td>
-                        {{--@if(Auth::user()->id == 99)--}}
-                            {{--<td>--}}
-                                {{--{!! Form::open(['route' => ['tags.destroy',
-                                $category->id], 'method' => 'DELETE']) !!}--}}
+                        @if(Auth::user()->id == 99)
+                            <td>
+                                {!! Form::open(['route' => ['tags.destroy',
+                                $tag->id], 'method' => 'DELETE']) !!}
 
-                                {{--{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm--}}
-                                {{--btn-position space-remember']) !!}--}}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm
+                                btn-position space-remember']) !!}
 
-                                {{--{!! Form::close() !!}--}}
+                                {!! Form::close() !!}
 
-                                {{--<a href="{{ route('tags.edit',$category->id ) }}" class="btn btn-default btn-sm--}}
-                                {{--btn-position">Edit</a>--}}
-                            {{--</td>--}}
-                        {{--@else--}}
-                            {{--<td></td>--}}
-                        {{--@endif--}}
+                                <a href="{{ route('tags.edit',$tag->id ) }}" class="btn btn-default btn-sm
+                                btn-position">Edit</a>
+                            </td>
+                        @else
+                            <td></td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>

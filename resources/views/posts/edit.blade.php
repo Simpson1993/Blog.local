@@ -20,7 +20,7 @@
             {{ Form::select('category_id', $categories, null, ['class' => 'form-control']) }}
 
             {{ Form::label('tags', 'Tags:', ["class" => 'form-spacing-top'])}}
-            {{ Form::select('category_id', $tags, null, ['class' =>
+            {{ Form::select('tags[]', $tags, null, ['class' =>
             'form-control select2-multi', 'multiple' => 'multiple']) }}
 
             {{ Form::hidden('user_id', $users) }}
@@ -68,9 +68,7 @@
     {!! Html::script('js/select2.min.js') !!}
     <script type="text/javascript">
         $('.select2-multi').select2()
-        $('.select2-multi').select2().val({!! json_encode($post->tags()->getRelatedIds())
-        !!}).trigger
-        ('change');
+        $('.select2-multi').select2().val({!! json_encode($post->tags()->getRelatedIds()) !!}).trigger('change');
     </script>
 
 @endsection

@@ -45,8 +45,7 @@ class PostController extends Controller
         } else {
             $users = null;
         }
-        return view('posts.create')->withCategories($categories)
-            ->withUsers($users)->withTags($tags);
+        return view('posts.create')->withCategories($categories)->withUsers($users)->withTags($tags);
     }
 
     /**
@@ -148,7 +147,6 @@ class PostController extends Controller
         }
 
         $post = Post::find($id);
-
         $post->title = $request->input('title');
         $post->category_id = $request->category_id;
         $post->user_id = $request->user_id;
