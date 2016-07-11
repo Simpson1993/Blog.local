@@ -37,8 +37,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        $tags = Tag::all();
+//        $categories = Category::all();
+//        $tags = Tag::all();
+        $categories = Category::lists('name', 'id');
+        $tags = Tag::lists('name', 'id');
+
 
         if (Auth::check()) {
             $users = Auth::user()->id;

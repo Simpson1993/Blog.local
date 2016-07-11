@@ -20,7 +20,7 @@
                 @foreach ($tags as $tag)
                     <tr>
                         <th>{{ $tag->id }}</th>
-                        <td>{{ $tag->name }}</td>
+                        <td><a href="{{route('tags.show', $tag->id)}}">{{ $tag->name }}</a></td>
                         @if(Auth::user()->id == 99)
                             <td>
                                 {!! Form::open(['route' => ['tags.destroy',
