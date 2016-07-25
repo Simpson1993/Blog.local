@@ -8,13 +8,13 @@
         <div class="col-md-8">
             <h1>Tags</h1>
             <table class="table">
-                <thed>
+                <thead>
                     <tr>
                         <th>#</th>
                         <th>Name</th>
                         <th></th>
                     </tr>
-                </thed>
+                </thead>
 
                 <tbody>
                 @foreach ($tags as $tag)
