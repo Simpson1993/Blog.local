@@ -26,8 +26,6 @@ class ProfileController extends Controller
     }
     public function saveSettings(Request $request)
     {
-        $user = User::find(Auth::user()->id);
-
         $this->validate($request, [
             'profile_banner_url' => 'url',
             'profile_image_url' => 'url',
@@ -51,9 +49,9 @@ class ProfileController extends Controller
         return Redirect()->back();
     }
 
-    public function viewProfile($id)
+    public function viewProfile()
     {
-        $user = User::find($id);
+        $user = Auth::user();
         $user_id = Auth::user()->id;
         $comments = Comment::where('user_id', '=', $user_id)->count();
         $posts = Post::where('user_id', '=', $user_id)->get();

@@ -28,7 +28,7 @@
 
                         <div class="form-group">
                             {!! Form::label('about_me', 'Input about information*') !!}
-                            {!! Form::textarea('about_me',$user->about_me, ['class' => 'field']) !!}
+                            {!! Form::textarea('about_me',$user->about_me, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
