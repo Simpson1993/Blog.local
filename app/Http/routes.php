@@ -10,9 +10,8 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-    //Telegram chat-bot
-    Route::post('/api', ['as' => 'message', 'uses' => 'TelegramBotController@getMessage']);
+//    //Telegram chat-bot
+//    Route::post('/api', ['as' => 'message', 'uses' => 'TelegramBotController@getMessage']);
 
     //Search
     Route::post('search',
@@ -45,6 +44,7 @@
 
     // Categories
     Route::resource('categories', 'CategoryController', ['except' => ['create']]);
+    Route::resource('tags', 'TagController', ['except' => ['create']]);
 
     //Comments
     Route::resource('comments', 'CommentController', ['except'

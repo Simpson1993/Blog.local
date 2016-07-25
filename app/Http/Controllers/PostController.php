@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Session;
 use Illuminate\Http\Request;
@@ -9,6 +9,7 @@ use App\Post;
 use App\Category;
 use App\User;
 use Auth;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -24,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id', 'desc')->paginate(10);
+        $posts = Post::all();
 
         return view('posts.index')->withPosts($posts);
     }
@@ -36,14 +37,18 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+//        $categories = Category::all();
+//        $tags = Tag::all();
+        $categories = Category::lists('name', 'id');
+        $tags = Tag::lists('name', 'id');
+
 
         if (Auth::check()) {
             $users = Auth::user()->id;
         } else {
             $users = null;
         }
-        return view('posts.create')->withCategories($categories)->withUsers($users);
+        return view('posts.create')->withCategories($categories)->withUsers($users)->withTags($tags);
     }
 
     /**
@@ -72,6 +77,8 @@ class PostController extends Controller
         $post->body = $request->body;
 
         $post->save();
+
+        $post->tags()->sync($request->tags, false);
 
         Session::flash('success', 'The blog post was successfully save!');
 
@@ -109,7 +116,10 @@ class PostController extends Controller
             $users = null;
         }
 
-        return view('posts.edit')->withPost($post)->withCategories($cats)->withUsers($users);
+        $tags = Tag::lists('name', 'id');
+
+        return view('posts.edit')->withPost($post)->withCategories($cats)
+            ->withUsers($users)->withTags($tags);
     }
 
     /**
@@ -140,7 +150,6 @@ class PostController extends Controller
         }
 
         $post = Post::find($id);
-
         $post->title = $request->input('title');
         $post->category_id = $request->category_id;
         $post->user_id = $request->user_id;
@@ -148,6 +157,13 @@ class PostController extends Controller
         $post->body = $request->input('body');
 
         $post->save();
+
+        if(isset($request->tags)){
+            $post->tags()->sync($request->tags);
+        } else {
+            $post->tags()->sync([]);
+        }
+        $post->tags()->sync($request->tags);
 
         Session::flash('success', 'This post was successfully saved!');
 

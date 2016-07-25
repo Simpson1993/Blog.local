@@ -1,6 +1,6 @@
 <?php
 
-namespace app;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,6 +20,7 @@ class Post extends Model
     {
         return $this->hasMany('App\Comment');
     }
+    
     public function tags()
     {
         return $this->belongsToMany('App\Tag');
