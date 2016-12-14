@@ -4,6 +4,8 @@
 
     @include('partials._head')
 
+    <link rel="icon" type="image/x-icon" href="{{ asset('/img/favicon/favicon.ico') }}">
+
     </head>
 
     <body>

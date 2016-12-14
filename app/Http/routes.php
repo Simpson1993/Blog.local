@@ -47,8 +47,9 @@
     Route::resource('tags', 'TagController', ['except' => ['create']]);
 
     //Comments
-    Route::resource('comments', 'CommentController', ['except'
-                    => ['create', 'update', 'index', 'show', 'edit']]);
+    Route::resource('comments', 'CommentController', [
+        'except' => ['create', 'update', 'index', 'show', 'edit']
+    ]);
 
     //Blog pages
     Route::bind('blog', function ($slug) {

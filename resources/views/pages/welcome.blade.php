@@ -16,6 +16,8 @@
 
                     <div class="post main-image main-radius form-spacing-top">
                         <h2>{{ $post->title }}</h2>
+
+                        <h2>{{ $post->user->name }}</h2>
                         <p>{{ substr($post->body, 0, 150) }} {{ strlen($post->body) > 150 ? "..." : "" }}</p>
                         <a href="{{ url('blog/'.$post->slug) }}" class="btn btn-primary">Read More</a>
                     </div>

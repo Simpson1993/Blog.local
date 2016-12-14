@@ -8,6 +8,8 @@ use App\Post;
 use App\Comment;
 use App\User;
 use Auth;
+use Image;
+use Intervention\Image\ImageManager;
 
 class BlogController extends Controller
 {
@@ -19,6 +21,10 @@ class BlogController extends Controller
         return view('blog.index')->withPosts($posts);
     }
 
+    /**
+     * @param Post $post
+     * @return mixed
+     */
     public function getSingle(Post $post)
     {
         //fetch from the DB based on slug
@@ -28,6 +34,7 @@ class BlogController extends Controller
         } else {
             $users = null;
         }
-        return view('blog.single')->withPost($post)->withComments($comments)->withUsers($users);
+        return view('blog.single')->withPost($post)->withComments($comments)
+            ->withUsers($users);
     }
 }

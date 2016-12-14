@@ -12,8 +12,11 @@
         "laracasts/flash": "^2.0",
         "telegram-bot/api": "^2.2",
         "guzzlehttp/guzzle": "~6.0",
-        "irazasyed/telegram-bot-sdk": "^2.0",
-        "fzaninotto/faker": "^1.6"
+        "fzaninotto/faker": "^1.6",
+        "intervention/image": "^2.3",
+        "laracasts/generators": "^1.1",
+        "squizlabs/php_codesniffer": "*",
+        "laravelrus/sleepingowl": "4.*@dev"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

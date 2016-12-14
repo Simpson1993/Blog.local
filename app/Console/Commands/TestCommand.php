@@ -45,16 +45,25 @@ class TestCommand extends Command
         Eloquent::unguard();
 
         $this->ask('What is your name ?');
-        if ($this->confirm('Вы хотите продолжить? [yes|no]'))
-        {
-            DB::transaction(function() use ($posts){
-                $posts->each(function($post) {
-                    $post->update([
-                        'user_id' => rand(6, 6),
-                    ]);
+        $question1 = $this->ask('Скільки байтів в кілобайті?');
+        if ($question1 == '1024'){
+            $question2 = $this->ask('Скільки бітів в байті?');
+            if ($question2 == '8') {
+                DB::transaction(function () use ($posts) {
+                    $posts->each(function ($post) {
+                        $post->update([
+                            'user_id' => rand(6, 6),
+                        ]);
+                    });
                 });
-            });
+            }elseif ($question2 == '1024'){
+                $this->error('Whooops!');
+            } else {
+                $this->error('Wrong answer!');
+            }
             $this->info('All work fine!');
+        } else {
+            $this->error('Wrong answer!');
         }
     }
 }
