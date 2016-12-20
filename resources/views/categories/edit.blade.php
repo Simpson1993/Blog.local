@@ -4,9 +4,9 @@
 
 @section('content')
 
-    <div class = "row">
+    <div class="row">
         {!! Form::model($category, ['route' => ['categories.update', $category->id], 'method' => 'PUT']) !!}
-        <div class = "col-md-8">
+        <div class="col-md-8">
             {{ Form::label('name', 'Category name: ') }}
             {{ Form::text('name', null, ["class" => 'form-control input-lg']) }}
 
@@ -15,18 +15,19 @@
             {!! Html::linkRoute('categories.edit', 'Cancel', array($category->id), array('class' => 'btn
                         btn-danger btn-block')) !!}
 
-            <a href="{{ route('categories.index') }}" class="btn btn-default btn-block btn-top-space">
+            <a href="{{ route('categories.index') }}"
+               class="btn btn-default btn-block btn-top-space">
                 <<< Return to all categories</a>
         </div>
 
-        <div class = "col-md-4">
-            <div class = "well">
-                <dl class = "dl-horizontal">
-                    <dt>Created At: </dt>
+        <div class="col-md-4">
+            <div class="well">
+                <dl class="dl-horizontal">
+                    <dt>Created At:</dt>
                     <dd>{{ date('M j, Y H:i',strtotime($category->created_at)) }}</dd>
                 </dl>
-                <dl class = "dl-horizontal">
-                    <dt>Last Updated: </dt>
+                <dl class="dl-horizontal">
+                    <dt>Last Updated:</dt>
                     <dd>{{ date('M j, Y H:i', strtotime($category->updated_at)) }}</dd>
                 </dl>
             </div>

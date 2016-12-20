@@ -2,12 +2,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Laravel Blog @yield('title')</title> <!-- change this title for each page -->
+<title>Laravel
+    Blog @yield('title')</title> <!-- change this title for each page -->
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+<link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
       integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
       crossorigin="anonymous">
+<link rel="icon" type="image/x-icon"
+      href="{{ asset('/img/favicon/favicon.ico') }}">
+<link rel="stylesheet" href="{{ asset('/css/sweetalert.css') }}">
 
 {{ Html::style('css/styles.css') }}
 {{ Html::style('css/font-awesome.min.css') }}

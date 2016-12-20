@@ -17,47 +17,47 @@
             <hr>
             {!! Form::open(array('route' => 'posts.store', 'data-parsley-validate' => '')) !!}
 
-                {{ Form::label('title', 'Title: ') }}
-                {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
+            {{ Form::label('title', 'Title: ') }}
+            {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 
-                {{ Form::label('category_id', 'Category: ') }}
-                {{ Form::select('category_id', $categories, null, ['class' => 'form-control']) }}
-            
-                {{--<select class="form-control" name="category_id">--}}
+            {{ Form::label('category_id', 'Category: ') }}
+            {{ Form::select('category_id', $categories, null, ['class' => 'form-control']) }}
 
-                    {{--@foreach ($categories as $category)--}}
+            {{--<select class="form-control" name="category_id">--}}
 
-                        {{--<option value="{{ $category->id }}">{{ $category->name }}</option>--}}
+            {{--@foreach ($categories as $category)--}}
 
-                    {{--@endforeach--}}
+            {{--<option value="{{ $category->id }}">{{ $category->name }}</option>--}}
 
-                {{--</select>--}}
+            {{--@endforeach--}}
 
-                {{ Form::label('tags', 'Tags: ') }}
-                {{ Form::select('tags[]', $tags, null, ['class' =>'form-control select2-multi', 'multiple' => 'multiple']) }}
+            {{--</select>--}}
 
-                {{--<select class="form-control select2-multi" name="tags[]"--}}
-                        {{--multiple="multiple">--}}
+            {{ Form::label('tags', 'Tags: ') }}
+            {{ Form::select('tags[]', $tags, null, ['class' =>'form-control select2-multi', 'multiple' => 'multiple']) }}
 
-                    {{--@foreach ($tags as $tag)--}}
+            {{--<select class="form-control select2-multi" name="tags[]"--}}
+            {{--multiple="multiple">--}}
 
-                        {{--<option value="{{ $tag->id }}">{{$tag->name}}</option>--}}
+            {{--@foreach ($tags as $tag)--}}
 
-                    {{--@endforeach--}}
+            {{--<option value="{{ $tag->id }}">{{$tag->name}}</option>--}}
 
-                {{--</select>--}}
+            {{--@endforeach--}}
 
-                {{ Form::hidden('user_id', $users) }}
+            {{--</select>--}}
 
-                {{ Form::label('slug', 'Slug: ') }}
-                {{ Form::text('slug', null, ['class' => 'form-control', 'required' => '', 'minlength' => '5',
-                'maxlength' => '255']) }}
+            {{ Form::hidden('user_id', $users) }}
 
-                {{ Form::label('body', 'Post Body: ') }}
-                {{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
+            {{ Form::label('slug', 'Slug: ') }}
+            {{ Form::text('slug', null, ['class' => 'form-control', 'required' => '', 'minlength' => '5',
+            'maxlength' => '255']) }}
 
-                {{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block',
-                'style' => 'margin-top: 10px;')) }}
+            {{ Form::label('body', 'Post Body: ') }}
+            {{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
+
+            {{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block',
+            'style' => 'margin-top: 10px;')) }}
 
             {!! Form::close() !!}
         </div>

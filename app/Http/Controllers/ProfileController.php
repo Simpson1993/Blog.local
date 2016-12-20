@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\User;
-use Auth;
-use Session;
 use App\Comment;
 use App\Post;
+use App\User;
+use Auth;
+use Illuminate\Http\Request;
+use Session;
 
 class ProfileController extends Controller
 {
@@ -24,6 +23,7 @@ class ProfileController extends Controller
 
         return view('user.settings')->withUser($user);
     }
+
     public function saveSettings(Request $request)
     {
         $this->validate($request, [

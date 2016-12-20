@@ -149,13 +149,16 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
+        Bican\Roles\RolesServiceProvider::class,
+        SoftwareTours\Users\Providers\UsersProvider::class,
 
         Laracasts\Flash\FlashServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         Intervention\Image\ImageServiceProvider::class,
-
+        App\Repositories\Users\BackendServiceProvider::class,
+        App\Repositories\Users\Permissions\BackendServiceProvider::class,
 
         /*
          * Application Service Providers...

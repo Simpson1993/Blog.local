@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use DB;
 use App\Post;
+use DB;
 use Eloquent;
+use Illuminate\Console\Command;
 
 class TestCommand extends Command
 {
@@ -46,7 +46,7 @@ class TestCommand extends Command
 
         $this->ask('What is your name ?');
         $question1 = $this->ask('Скільки байтів в кілобайті?');
-        if ($question1 == '1024'){
+        if ($question1 == '1024') {
             $question2 = $this->ask('Скільки бітів в байті?');
             if ($question2 == '8') {
                 DB::transaction(function () use ($posts) {
@@ -56,7 +56,7 @@ class TestCommand extends Command
                         ]);
                     });
                 });
-            }elseif ($question2 == '1024'){
+            } elseif ($question2 == '1024') {
                 $this->error('Whooops!');
             } else {
                 $this->error('Wrong answer!');

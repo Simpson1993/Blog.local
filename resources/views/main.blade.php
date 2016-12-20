@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
 
     @include('partials._head')
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('/img/favicon/favicon.ico') }}">
+</head>
 
-    </head>
+<body>
 
-    <body>
+@include('partials._nav')
 
-        @include('partials._nav')
+<div class="container">
+    @include('partials._messages')
 
-        <div class="container">
-            @include('partials._messages')
+    @yield('content')
 
-            @yield('content')
+    @include('partials._footer')
 
-            @include('partials._footer')
+</div>
 
-        </div>
+@include('partials._javascript')
 
-        @include('partials._javascript')
+@yield('scripts')
 
-        @yield('scripts')
-
-    </body>
+</body>
 </html>

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use Session;
 use App\Comment;
 use Auth;
+use Illuminate\Http\Request;
+use Session;
 
 class CommentController extends Controller
 {
@@ -14,11 +13,11 @@ class CommentController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -27,7 +26,7 @@ class CommentController extends Controller
         $this->validate($request, array(
 
             'body' => 'required',
-            
+
         ));
 
         $comment = new Comment;
@@ -42,10 +41,11 @@ class CommentController extends Controller
 
         return redirect()->back();
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

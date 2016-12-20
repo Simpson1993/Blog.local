@@ -9,18 +9,20 @@
             <h1>Tags</h1>
             <table class="table">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th></th>
-                    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
                 </thead>
 
                 <tbody>
                 @foreach ($tags as $tag)
                     <tr>
                         <th>{{ $tag->id }}</th>
-                        <td><a href="{{route('tags.show', $tag->id)}}">{{ $tag->name }}</a></td>
+                        <td>
+                            <a href="{{route('tags.show', $tag->id)}}">{{ $tag->name }}</a>
+                        </td>
                         @if(Auth::user()->id == 99)
                             <td>
                                 {!! Form::open(['route' => ['tags.destroy',
@@ -31,7 +33,8 @@
 
                                 {!! Form::close() !!}
 
-                                <a href="{{ route('tags.edit',$tag->id ) }}" class="btn btn-default btn-sm
+                                <a href="{{ route('tags.edit',$tag->id ) }}"
+                                   class="btn btn-default btn-sm
                                 btn-position">Edit</a>
                             </td>
                         @else

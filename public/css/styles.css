@@ -5,27 +5,33 @@
 .form-spacing-top {
     margin-top: 20px;
 }
+
 .font-for-body {
     font-family: Times;
     font-size: 20px;
 }
+
 .space-remember {
     margin-left: 5px;
 }
 
-.btn-top-space{
+.btn-top-space {
     margin-top: 8px;
 }
+
 .btn-position {
     float: right;
 }
+
 .for-comment {
     color: #2c8aff;
 }
+
 .user-name {
     color: #39ff47;
     text-align: center;
 }
+
 .user-info {
     color: #28add6;
     text-align: left;
@@ -33,16 +39,20 @@
     font-family: Times;
     font-size: 18px;
 }
-.main-image{
+
+.main-image {
     background-color: #ddfffa;
     padding: 16px;
 }
-.jmb-image{
+
+.jmb-image {
     background-image: url('http://z210.ru/uploads/posts/2016-04/1460241245_skyrim-world-rocks-winter-cold-the-elder-scrolls-v-skyrim-2560x1440.jpg');
 }
+
 .main-radius {
     border-radius: 20px;
 }
+
 .men-style {
     color: #00bfff;
 }

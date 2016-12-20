@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Session;
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Post;
 use App\Category;
-use App\User;
-use Auth;
+use App\Post;
 use App\Tag;
+use Auth;
+use Illuminate\Http\Request;
+use Session;
 
 class PostController extends Controller
 {
@@ -18,6 +16,7 @@ class PostController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -54,19 +53,19 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         //validate the data
         $this->validate($request, array(
-                'title' => 'required|max:255',
-                'category_id' => 'required|integer',
-                'user_id' => 'required|integer',
-                'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-                'body' => 'required'
-             ));
+            'title' => 'required|max:255',
+            'category_id' => 'required|integer',
+            'user_id' => 'required|integer',
+            'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+            'body' => 'required'
+        ));
         //store in the database
         $post = new Post;
 
@@ -89,20 +88,20 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $post = Post::find($id);
         return view('posts.show')->withPost($post);
-    ///////////////////////////////with('post', $post);
+        ///////////////////////////////with('post', $post);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -125,8 +124,8 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -158,7 +157,7 @@ class PostController extends Controller
 
         $post->save();
 
-        if(isset($request->tags)){
+        if (isset($request->tags)) {
             $post->tags()->sync($request->tags);
         } else {
             $post->tags()->sync([]);
@@ -173,7 +172,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

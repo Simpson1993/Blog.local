@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Post;
-use App\Comment;
 use App\Category;
-use App\User;
-use App\Http\Requests;
+use App\Comment;
+use App\Post;
 
 class PagesController extends Controller
 {

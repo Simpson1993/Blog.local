@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Category;
+use Illuminate\Database\Seeder;
 
 class CategoriesSeeder extends Seeder
 {
@@ -16,8 +16,7 @@ class CategoriesSeeder extends Seeder
 
         Category::truncate();
 
-        foreach(range(1, 5) as $index)
-        {
+        foreach (range(1, 5) as $index) {
             Category::create([
                 'name' => ucfirst($faker->word),
             ]);

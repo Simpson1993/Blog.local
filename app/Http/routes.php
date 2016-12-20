@@ -2,66 +2,44 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Laravel User Management Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
 */
-//    //Telegram chat-bot
-//    Route::post('/api', ['as' => 'message', 'uses' => 'TelegramBotController@getMessage']);
 
-    //Search
-    Route::post('search',
-        ['as' => 'post_search', 'uses' => 'SearchPostsController@postSearch']);
+Route::auth();
 
-    //Feedback
-    Route::get('contact',
-        ['as' => 'contact', 'uses' => 'AboutController@create']);
-    Route::post('contact',
-        ['as' => 'contact_store', 'uses' => 'AboutController@store']);
+Route::group(['middleware' => 'auth'], function () {
 
-    //User information: profile, setting
-    Route::get('user/settings', ['as' => 'settings', 'uses' => 'ProfileController@viewSettings']);
-    Route::post('user/settings', 'ProfileController@saveSettings');
-    Route::any('user/profile/{userId}', ['as' => 'profile', 'uses' => 'ProfileController@viewProfile']);
+    /*
+    |--------------------------------------------------------------------------
+    | Dashboard
+    |--------------------------------------------------------------------------
+    */
 
-    // Authentication Routes
-    Route::get('auth/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
-    Route::post('auth/login', 'Auth\AuthController@postLogin');
-    Route::get('auth/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+    Route::get('/', ['as' => 'dashboard', 'uses' => 'Dashboard\DashboardController@index']);
 
-    // Registration Routes
-    Route::get('auth/register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
-    Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-    // Password Reset Routes
-    Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
-    Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
-    Route::post('password/reset', 'Auth\PasswordController@reset');
+    /*
+    |--------------------------------------------------------------------------
+    | Users crud
+    |--------------------------------------------------------------------------
+    */
+    Route::get('users/index', ['as' => 'users.index', 'uses' => 'Users\UserController@index']);
+    Route::get('users/create', ['as' => 'users.create', 'uses' => 'Users\UserController@create']);
+    Route::post('users/store', ['as' => 'users.store', 'uses' => 'Users\UserController@store']);
+    Route::get('users/datatable', ['as' => 'users.datatable', 'uses' => 'Users\UserController@datatable']);
+    Route::delete('users/{user?}', ['as' => 'users.destroy', 'uses' => 'Users\UserController@destroy']);
+    Route::get('users/{param}/edit', ['as' => 'users.edit', 'uses' => 'Users\UserController@edit']);
 
-    // Categories
-    Route::resource('categories', 'CategoryController', ['except' => ['create']]);
-    Route::resource('tags', 'TagController', ['except' => ['create']]);
+    /*
+    |--------------------------------------------------------------------------
+    | Permissions crud
+    |--------------------------------------------------------------------------
+    */
 
-    //Comments
-    Route::resource('comments', 'CommentController', [
-        'except' => ['create', 'update', 'index', 'show', 'edit']
-    ]);
+    Route::get('users/{param}/permissions', ['as' => 'users.permissions', 'uses' => 'Users\PermissionController@index']);
+    Route::put('users/permissions/update', ['as' => 'users.permissions.update', 'uses' => 'Users\PermissionController@update']);
+    Route::get('users/{param}/login-as', ['as' => 'users.login_as', 'uses' => 'Users\PermissionController@loginAs']);
+    Route::put('users/{product}/update', ['as' => 'users.update', 'uses' => 'Users\UserController@update']);
 
-    //Blog pages
-    Route::bind('blog', function ($slug) {
-        return App\Post::where('slug', $slug)->firstOrFail();
-    });
-    Route::get('blog/{blog}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])
-        ->where('slug', '[\w\d\-\_]+');
-    Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
-
-    //Posts pages
-    Route::resource('posts', 'PostController');
-
-    //Main pages
-    Route::get('/', 'PagesController@getIndex');
-    Route::get('about', 'PagesController@getAbout');
+});

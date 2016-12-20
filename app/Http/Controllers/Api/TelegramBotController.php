@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use GuzzleHttp\Client;
+use Illuminate\Http\Request;
 use Session;
 
 class TelegramBotController extends Controller
@@ -24,7 +23,7 @@ class TelegramBotController extends Controller
             case '/currencies':
                 $text = 'Курс валют Національного банку';
                 $keyboard = [
-                    "keyboard" =>[
+                    "keyboard" => [
                         ["🇺🇸USD"],
                         ["🇪🇺EUR"],
                         ["🇵🇱PLN"],
@@ -154,7 +153,7 @@ class TelegramBotController extends Controller
         $gbp_bid = number_format($currency->where('currency', 'GBR')->pluck('bid')->first(), 2);
         $gbp_ask = number_format($currency->where('currency', 'GBR')->pluck('ask')->first(), 2);
 
-        $text = "************************************************
+        $text = " ************************************************
                  🇺🇸 USD Купівля: $usd_bid  Продаж: $usd_ask  
                  🇪🇺 EUR Купівля: $eur_bid  Продаж: $eur_ask 
                  🇵🇱 PLN Купівля: $pln_bid  Продаж: $pln_ask 

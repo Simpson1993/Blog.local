@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Comment;
+use Illuminate\Database\Seeder;
 
 class CommentsSeeder extends Seeder
 {
@@ -16,8 +16,7 @@ class CommentsSeeder extends Seeder
 
         Comment::truncate();
 
-        foreach(range(1, 90) as $index)
-        {
+        foreach (range(1, 90) as $index) {
             Comment::create([
                 'user_id' => rand(1, 6),
                 'body' => $faker->sentence,

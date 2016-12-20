@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\User;
+use Illuminate\Database\Seeder;
 
 class UsersSeeder extends Seeder
 {
@@ -16,8 +16,7 @@ class UsersSeeder extends Seeder
 
         User::truncate();
 
-        foreach(range(1, 5) as $index)
-        {
+        foreach (range(1, 5) as $index) {
             User::create([
                 'name' => $faker->name,
                 'email' => $faker->email,
@@ -29,7 +28,7 @@ class UsersSeeder extends Seeder
                 'contacts' => $faker->address
             ]);
         }
-        
+
         User::create([
             'name' => 'Gordon Freemen',
             'email' => 'user1@user.com',
@@ -40,7 +39,7 @@ class UsersSeeder extends Seeder
             'about_me' => 'Перший девелопер на селі',
             'contacts' => 'Black Messa'
         ]);
-        
-        
+
+
     }
 }

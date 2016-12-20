@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <h1>Contact Me</h1>
             <hr>
-            {!! Form::open(array('route' => 'contact_store', 'class' => 'form')) !!}
+            {!! Form::open(array('url' => '/send-message', 'class' => 'form sendMessageForm')) !!}
 
             <div class="form-group">
                 {!! Form::label('Your Name') !!}

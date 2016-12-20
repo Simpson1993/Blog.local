@@ -1,29 +1,29 @@
-@extends('main')
-
-@section('title', '| Register')
+@extends('layouts.login')
 
 @section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Register</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                            {{ csrf_field() }}
 
-    <div class="row">
-        <div class="col-md-6 col-lg-offset-3">
-            {!! Form::open() !!}
+                            @include('auth.partials.register-inputs-name')
+                            @include('auth.partials.register-inputs-email')
+                            @include('auth.partials.register-inputs-passwords')
+                            @include('auth.partials.register-submit',array('text'=>'Register'))
 
-                {{ Form::label('name', 'Name: ') }}
-                {{ Form::text('name', null, ['class' => 'form-control']) }}
-
-                {{ Form::label('email', 'Email: ') }}
-                {{ Form::email('email', null, ['class' => 'form-control']) }}
-
-                {{ Form::label('password', 'Password: ') }}
-                {{ Form::password('password', ['class' => 'form-control']) }}
-
-                {{ Form::label('password_confirmation', 'Confirm Password') }}
-                {{ Form::password('password_confirmation', ['class' => 'form-control']) }}
-
-                {{ Form::submit('Register', ['class' => 'btn btn-primary btn-block form-spacing-top']) }}
-
-            {!! Form::close() !!}
+                        </form>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
+                        Alredy have an account? <a class="" href="{{ url('/login') }}"> Log in</a>.
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 @endsection

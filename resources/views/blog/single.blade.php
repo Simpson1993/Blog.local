@@ -21,7 +21,7 @@
             <h3 class="for-comment">Comments</h3>
 
             @if ($users != null)
-            {!! Form::open(['route' => 'comments.store', 'data-parsley-validate' => '']) !!}
+                {!! Form::open(['route' => 'comments.store', 'data-parsley-validate' => '']) !!}
 
                 {{ Form::hidden('user_id', $users) }}
 
@@ -32,7 +32,7 @@
 
                 {{ Form::submit('Add New Comment', ['class' => 'btn btn-button btn-primary btn-top-space']) }}
 
-            {!! Form::close() !!}
+                {!! Form::close() !!}
             @endif
 
             @foreach($comments as $comment)
@@ -40,16 +40,22 @@
                     <div class="media">
                         <div class="media-left">
                             @if($comment->user->profile_image_url != "")
-                                <img class="media-object" src="{{ $comment->user->profile_image_url }}" width="80">
+                                <img class="media-object"
+                                     src="{{ $comment->user->profile_image_url }}"
+                                     width="80">
                             @else
-                                <img class="media-object" src="https://vstroike.pro/assets/images/user-default.png" width="80">
+                                <img class="media-object"
+                                     src="https://vstroike.pro/assets/images/user-default.png"
+                                     width="80">
                             @endif
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">{{ $comment->user->name }}</h4>
                             <p>{{ $comment->body }}</p>
                         </div>
-                        <p class="btn-position"><i>{{ date('M j, Y H:i', strtotime($comment->created_at)) }}</i></p>
+                        <p class="btn-position">
+                            <i>{{ date('M j, Y H:i', strtotime($comment->created_at)) }}</i>
+                        </p>
                     </div>
                 @endif
             @endforeach

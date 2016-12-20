@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Post;
+use Illuminate\Http\Request;
 
 class SearchPostsController extends Controller
 {

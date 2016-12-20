@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Post;
+use Illuminate\Database\Seeder;
 
 class PostsSeeder extends Seeder
 {
@@ -16,8 +16,7 @@ class PostsSeeder extends Seeder
 
         Post::truncate();
 
-        foreach(range(1, 30) as $index)
-        {
+        foreach (range(1, 30) as $index) {
             Post::create([
                 'title' => $faker->sentence,
                 'category_id' => rand(1, 5),

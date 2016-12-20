@@ -1,7 +1,5 @@
 <?php
 
-use SleepingOwl\Admin\Navigation\Page;
-
 // Default check access logic
 // AdminNavigation::setAccessLogic(function(Page $page) {
 // 	   return auth()->user()->isSuperAdmin();
@@ -24,14 +22,14 @@ use SleepingOwl\Admin\Navigation\Page;
 return [
     [
         'title' => 'Dashboard',
-        'icon'  => 'fa fa-dashboard',
-        'url'   => route('admin.dashboard'),
+        'icon' => 'fa fa-dashboard',
+        'url' => route('admin.dashboard'),
     ],
 
     [
         'title' => 'Information',
-        'icon'  => 'fa fa-exclamation-circle',
-        'url'   => route('admin.information'),
+        'icon' => 'fa fa-exclamation-circle',
+        'url' => route('admin.information'),
     ],
 
     // Examples
@@ -65,9 +63,9 @@ return [
     //                'title'    => 'Blog',
     //                'priority' => 100,
     //                'model'    => \App\Blog::class
-	//		      ));
+    //		      ));
     //
-	//		      $page->addPage(\App\Blog::class);
+    //		      $page->addPage(\App\Blog::class);
     //	      }),
     //
     //        // or
